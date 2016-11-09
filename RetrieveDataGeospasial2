@@ -1,0 +1,46 @@
+Latar Belakang
+Ada banyak situs atapun lembaga yang menyediakan data shapefile contohnya seperti ESRI.tidak lain dari itu kita 
+harus menggunakan software pembantu untuk melihat file-file tersebut seperti QGIS dan Python,tanpa 
+software-software ini kita dapat melihat file tersebut.pada shapefile terdapat file shp dan dbf dan 
+didalam file shp itu sendiri terdapat pula data geometri yang akan saya menjelaskan sedikit .
+ 
+Pembahasan    
+   Ada 3 bagian didalam file geometri yaitu :  
+                    1. Point (Data berupa titik)
+                    2. Polyline (Data berupa garis)
+                          Polyline adalah garis yang memiliki titik awal dan memiliki titik akhir akan tetapi kedua 
+                          titik tersebut nantinya tidak akan bertemu sehingga tidak membentuk sebuah daerah. Seperti 
+                          Contohnya batas negara, batas provinsi, dan batas daerah
+                    3.Polygon ( Data berupa garis namun antara titik awal dan akhirnya saling bertemu
+                          polygon adalah garis yang memiliki titik awal dan memiliki titik akhir dan kedua titik 
+                          tersebut nantinya akan  bertemu sehinga membentuk suatu daerah. Seperti contohnya yaitu 
+                          daerah, pulau, dan negara.
+
+
+Membuat Class untuk melihat data point suatu negara dalam Geometri :
+
+Import shapefile
+Class Gede(object):
+     Def__init__(self,namafile):
+        Self.sf = shapefile.reader(namafile)
+     Def Hitungbaris(self):
+         Rec = self.sf.shapes()
+         Return len(rec)
+     Def selectNegara(self,NEGARA):
+         i = 0
+         for a in self.sf.records():
+         if a[8] ==NEGARA:
+         return i
+         i=i+1
+
+
+Cara memanggil data diatas pada python
+>> import gede
+   >> inst gede.Gede('ind_maritim.shp')
+   >> print i
+   >> i = i + 1
+
+ Kesimpulan:
+Jadi tanpa software seperti QGIS dan Python kita belum tentu atau tidak dapat melihat membaca data shapefile 
+meskipun sudah memiliki data tersebut.
+
